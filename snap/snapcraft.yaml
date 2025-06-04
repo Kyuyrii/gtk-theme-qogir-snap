@@ -1,0 +1,57 @@
+name: gtk-theme-qogir
+build-base: core24
+base: bare
+version: '2025-04-08'
+platforms:
+  all:
+    build-on: [amd64]
+    build-for: [all]
+summary: Qogir GTK theme
+description: |
+  A Snap that allows you to use Qogir GTK themes in Snap apps
+grade: stable
+confinement: strict
+
+slots:
+  gtk-2-themes:
+    interface: content
+    source:
+      read:
+        - $SNAP/share/gtk2/Qogir
+        - $SNAP/share/gtk2/Qogir-Dark
+        - $SNAP/share/gtk2/Qogir-Light
+        - $SNAP/share/gtk2/Qogir-Manjaro
+        - $SNAP/share/gtk2/Qogir-Manjaro-Dark
+        - $SNAP/share/gtk2/Qogir-Manjaro-Light
+        - $SNAP/share/gtk2/Qogir-Ubuntu
+        - $SNAP/share/gtk2/Qogir-Ubuntu-Dark
+        - $SNAP/share/gtk2/Qogir-Ubuntu-Light
+  gtk-3-themes:
+    interface: content
+    source:
+      read:
+        - $SNAP/share/themes/Qogir
+        - $SNAP/share/themes/Qogir-Dark
+        - $SNAP/share/themes/Qogir-Light
+        - $SNAP/share/themes/Qogir-Manjaro
+        - $SNAP/share/themes/Qogir-Manjaro-Dark
+        - $SNAP/share/themes/Qogir-Manjaro-Light
+        - $SNAP/share/themes/Qogir-Ubuntu
+        - $SNAP/share/themes/Qogir-Ubuntu-Dark
+        - $SNAP/share/themes/Qogir-Ubuntu-Light
+parts:
+  gtk-2-themes:
+    plugin: dump
+    source: https://github.com/Kyuyrii/gtk-theme-qogir-snap/releases/download/gtk-theme-qogir/qogir-gtk-theme-2025-04-08.zip
+    organize:
+      gtk-themes: share/gtk2
+    prime:
+      - share/gtk2/*/gtk-2.0
+  gtk-3-themes:
+    plugin: dump
+    source: https://github.com/Kyuyrii/gtk-theme-qogir-snap/releases/download/gtk-theme-qogir/qogir-gtk-theme-2025-04-08.zip
+    organize:
+      gtk-themes: share/themes
+    prime:
+      - share/themes/*/gtk-3.0
+      - share/themes/*/gtk-4.0
